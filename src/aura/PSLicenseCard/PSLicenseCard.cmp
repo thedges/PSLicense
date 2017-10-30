@@ -1,0 +1,24 @@
+<aura:component implements="force:appHostable,forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes" access="global">
+	<aura:attribute name="id" type="String" />
+    <aura:attribute name="iconURL" type="String" />
+    <aura:attribute name="title" type="String" />
+    <aura:attribute name="description" type="String" />
+    <aura:attribute name="price" type="Integer" />
+    <aura:attribute name="term" type="Integer" />
+    <aura:attribute name="uom" type="String" />
+    <aura:attribute name="selected" type="Boolean" />
+
+    <aura:registerEvent name="licenseSelectEvent" type="c:PSLicenseSelectEvent"/>
+
+    <div class="container" onclick="{!c.onClick}">
+        <lightning:card class="{!v.selected == true ? 'selected' : ''}">
+            <aura:set attribute="title">
+                <img src="{!v.iconURL}" height="30" width="30" />&nbsp;
+                {!v.title}&nbsp;&nbsp;${!v.price}
+            </aura:set>
+            <p class="slds-p-horizontal--small">
+                {!v.description}
+            </p>
+        </lightning:card>
+    </div>
+</aura:component>

@@ -1,0 +1,61 @@
+<aura:component controller="PSPaymentFormController" implements="force:appHostable,forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes,force:hasRecordId">
+    <aura:attribute name="show" type="Boolean" default="false" />
+    <aura:attribute name="paymentType" type="String" default="Credit Card" />
+    <aura:attribute name="nicknameList" type="List" />
+    <aura:attribute name="nickname" type="String" />
+    <aura:attribute name="amount" type="Integer" />
+    <aura:attribute name="errorMsg" type="String" />
+    <aura:attribute name="acctHolderName" type="String" />
+    <aura:attribute name="acctNumber" type="String" />
+    <aura:attribute name="acctRouting" type="String" />
+    <aura:attribute name="ccNameOnCard" type="String" />
+    <aura:attribute name="ccNumber" type="String" />
+    <aura:attribute name="ccExpDate" type="String" />
+    <aura:attribute name="ccSecurityCode" type="String" />
+
+    <aura:attribute name="acctPaymentList" type="List" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:registerEvent name="paymentEvent" type="c:PSPaymentEvent"/>
+
+    <aura:if isTrue="{!v.show}">
+        <div class="container">
+            <aura:if isTrue="{!v.errorMsg.length > 0}">
+                <ui:message title="Error" severity="error" closable="true">
+                    {!v.errorMsg}
+                </ui:message>
+            </aura:if>
+            <div class="slds-form slds-form_horizontal slds-box" style="background: #F2F2F2;">
+                <div class="slds-p-bottom_small">
+                    <lightning:select name="paymentTypeSelect" aura:id="paymentTypeSelect" label="Payment Type:" onchange="{!c.paymentTypeSelect}">
+                        <option value="Credit Card">Credit Card</option>
+                        <option value="Bank Account">Bank Account</option>
+                    </lightning:select>
+                    <lightning:select name="nicknameSelect" aura:id="nicknameSelect" label="Nickname:" onchange="{!c.nicknameSelect}">
+                        <aura:iteration items="{!v.nicknameList}" var="item">
+                            <option text="{!item}" value="{!item}" />
+                        </aura:iteration>
+                    </lightning:select>
+                    <!-- <lightning:input label="Nickname:" name="nickname" /> -->
+                    <lightning:input label="Payment Amount:" type="number" formatter="currency" name="paymentAmount" value="{!v.amount}" readonly="true"/>
+                </div>
+                <aura:if isTrue="{!v.paymentType == 'Bank Account'}">
+                    <lightning:input label="Account Holder Name:" name="acctHolderName" value="{!v.acctHolderName}"/>
+                    <lightning:input label="Account Number:" name="acctNumber"  value="{!v.acctNumber}"/>
+                    <lightning:input label="Routing Number:" name="acctRouting"  value="{!v.acctRouting}"/>
+                    <div style="padding-top: 20px;" align="center"><img src="{!$Resource.PSCheckDetails}" /></div>
+                </aura:if>
+                <aura:if isTrue="{!v.paymentType == 'Credit Card'}">
+                    <lightning:input label="Name on Card:" name="ccNameOnCard"  value="{!v.ccNameOnCard}"/>
+                    <lightning:input label="Card Number:" name="ccNumber"  value="{!v.ccNumber}"/>
+                    <lightning:input label="Expiration Date (MMYY):" name="ccExpDate" placeholder="MMYY"  value="{!v.ccExpDate}"/>
+                    <lightning:input label="Security Code:" name="ccSecurityCode"  value="{!v.ccSecurityCode}"/>
+                </aura:if>
+                <div class="slds-p-top_small">
+                    <lightning:button variant="brand" label="Accept" onclick="{!c.btnAccept}" />
+                    <lightning:button variant="brand" label="Cancel" onclick="{!c.btnCancel}" />
+                </div>
+            </div>
+        </div>
+    </aura:if>
+</aura:component>

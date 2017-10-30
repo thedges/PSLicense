@@ -1,0 +1,5 @@
+<design:component label="PSLicenseSelector">
+    <design:attribute name="licenseType" label="License Type" Description="The license type configured in PSLicenseType object"/>
+    <design:attribute name="licenseLogo" label="License Logo" Description="The full URL to the image file to use as logo."/>
+    <design:attribute name="landingPageURL" label="Landing Page" Description="The page URL to redirect to after creating licenses." />
+</design:component>

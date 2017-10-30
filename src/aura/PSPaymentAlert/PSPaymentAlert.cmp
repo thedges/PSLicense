@@ -1,0 +1,28 @@
+<aura:component controller="PSPaymentAlertController" implements="force:appHostable,forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes">
+    <aura:attribute name="dueDate" type="String" default="2017-10-01" />
+    <aura:attribute name="amount" type="Integer" default="0" />
+    <aura:attribute name="showPayment" type="Boolean" default="false" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:if isTrue="{!v.amount > 0}">
+        <div class="slds-grid">
+            <div class="slds-p-right_small slds-size_1-of-2">
+                <lightning:card iconName="custom:custom53">
+                    <aura:set attribute="title">
+                        <b>Payment Alert</b>
+                    </aura:set>
+                    <p class="slds-p-left_medium">
+                        <div>You have permit payment of <b>${!v.amount}</b></div>
+                    </p>
+                    <div class="slds-p-left_medium slds-p-top_small">
+                        <lightning:button variant="brand" label="Make Payment" onclick="{!c.btnPayTax}" />
+                    </div>
+                </lightning:card>
+            </div>
+            <div class="slds-p-left_small slds-size_1-of-2">
+                <c:PSPaymentForm show="{!v.showPayment}" amount="{!v.amount}" />
+            </div>
+        </div>
+    </aura:if>
+</aura:component>

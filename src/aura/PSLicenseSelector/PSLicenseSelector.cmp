@@ -1,0 +1,43 @@
+<aura:component controller="PSLicenseSelectorController" implements="force:appHostable,forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="licenseType" type="String" default="Fishing" />
+    <aura:attribute name="licenseLogo" type="String" default="/myco/resource/1509107742000/FishingLicenseIcon" />
+    <aura:attribute name="licenseItemList" type="List" />
+    <aura:attribute name="errorMsg" type="String" />
+    <aura:attribute name="landingPageURL" type="String" default="/pslicense/PSLicense__c/00B1J0000054Slc" />
+    <aura:attribute name="total" type="Integer" default="0" />
+    <aura:attribute name="phase" type="String" default="selection" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.licenseItemList}" action="{!c.itemsChange}" />
+    <aura:handler name="licenseSelectEvent" event="c:PSLicenseSelectEvent" action="{!c.handleLicenseSelectEvent}" />
+    <aura:handler name="paymentEvent" event="c:PSPaymentEvent" action="{!c.handlePaymentEvent}" />
+
+    <div aura:id="mainapp">
+        <aura:if isTrue="{!v.errorMsg.length > 0}">
+            <ui:message title="Error" severity="error" closable="true">
+                {!v.errorMsg}
+            </ui:message>
+        </aura:if>
+        <aura:if isTrue="{!v.phase == 'selection'}">
+            <div class="slds-grid slds-wrap slds-grid--pull-padded">
+                <aura:iteration items="{!v.licenseItemList}" var="n">
+                    <div class="slds-col--padded-medium slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-3">
+                        <c:PSLicenseCard id="{!n.Id}" iconURL="{!v.licenseLogo}" title="{!n.Name__c}" description="{!n.Description__c}" price="{!n.Fee__c}" term="{!n.Term__c}" uom="{!n.UOM__c}" selected="{!n.selected}" />
+                        <div class="slds-m-bottom--medium"></div>
+                    </div>
+                </aura:iteration>
+            </div>
+            <span style="font-size: 20px"><b>Total: ${!v.total}</b></span>
+
+            <aura:if isTrue="{!v.total > 0}">
+                <div style="float: right">
+                    <lightning:button variant="brand" aura:id="nextBtn" label="Next" onclick="{!c.nextClick}" />
+                </div>
+            </aura:if>
+
+        </aura:if>
+        <aura:if isTrue="{!v.phase == 'payment'}">
+            <c:PSPaymentForm show="true" amount="{!v.total}" />
+        </aura:if>
+    </div>
+</aura:component>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>PSLicenseSelectorController</members>
+        <members>PSPaymentAlertController</members>
+        <members>PSPaymentFormController</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>PSLicenseCard</members>
+        <members>PSLicenseSelectEvent</members>
+        <members>PSLicenseSelector</members>
+        <members>PSPaymentAlert</members>
+        <members>PSPaymentForm</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
+        <members>AuthorizeDotNet__c</members>
+        <members>PSLicenseItem__c</members>
+        <members>PSLicenseType__c</members>
+        <members>PSLicense__c</members>
+        <members>PSPayment__c</members>
+        <members>Payment_Account__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>AuthorizeDotNet</members>
+        <name>RemoteSiteSetting</name>
+    </types>
+    <types>
+        <members>PSCheckDetails</members>
+        <name>StaticResource</name>
+    </types>
+    <version>39.0</version>
+</Package>
