@@ -24,6 +24,22 @@
         <name>CustomObject</name>
     </types>
     <types>
+        <members>PSLaunchNeed__c</members>
+        <members>PSLicenseType__c</members>
+        <members>PSLicense__c</members>
+        <members>Payment_Account__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>PSLaunchAction__c-PSLaunchAction Layout</members>
+        <members>PSLaunchNeed__c-PSLaunchNeed Layout</members>
+        <members>PSLicenseItem__c-PSLicenseItem Layout</members>
+        <members>PSLicenseType__c-PSLicenseType Layout</members>
+        <members>PSLicense__c-License Layout</members>
+        <members>PSPayment__c-Payment Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
         <members>AuthorizeDotNet</members>
         <name>RemoteSiteSetting</name>
     </types>
