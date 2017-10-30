@@ -3,7 +3,7 @@
 This is a component to provide a citizen accessing community to purchase licenses for such things as fishing licenses. The component has 2 primary parts:
 
 1. The first part is picking your licenses from a list of configured licenses. Provides the ability to just click on the licenses you need.
-2. The second part is paying for the licenses using a payment gateware. To use this capability, the user must request an Authorize.Net sandbox box account [here](https://developer.authorize.net/hello_world/sandbox/). Once the sandbox is setup, the "login" and "transkey" codes must be entered in to the AuthorizeDotNet custom setting.
+2. The second part is paying for the licenses using a payment gateway. To use this capability, the user must request an Authorize.Net sandbox box account [here](https://developer.authorize.net/hello_world/sandbox/). Once the sandbox is setup, the "login" and "transkey" codes must be entered in to the AuthorizeDotNet custom setting.
 
 The following are screenshots of showing citizen selecting licenses from community page and then transitioning to payment screen:
 
