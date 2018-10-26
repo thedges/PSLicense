@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
+        <members>PSAuthorizeDotNet</members>
         <members>PSLicenseSelectorController</members>
         <members>PSPaymentAlertController</members>
         <members>PSPaymentFormController</members>
@@ -11,6 +12,7 @@
         <members>PSLicenseSelectEvent</members>
         <members>PSLicenseSelector</members>
         <members>PSPaymentAlert</members>
+        <members>PSPaymentEvent</members>
         <members>PSPaymentForm</members>
         <name>AuraDefinitionBundle</name>
     </types>
