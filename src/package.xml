@@ -23,6 +23,7 @@
         <members>PSLicense__c</members>
         <members>PSPayment__c</members>
         <members>Payment_Account__c</members>
+        <members>Permit__c</members>
         <name>CustomObject</name>
     </types>
     <types>
