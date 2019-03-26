@@ -1,5 +1,7 @@
 # PSLicense
 
+THIS SOFTWARE IS COVERED BY [THIS DISCLAIMER](https://raw.githubusercontent.com/thedges/Disclaimer/master/disclaimer.txt).
+
 This is a component to provide a citizen accessing community to purchase licenses for such things as fishing licenses. The component has 2 primary parts:
 
 1. The first part is picking your licenses from a list of configured licenses. Provides the ability to just click on the licenses you need.
