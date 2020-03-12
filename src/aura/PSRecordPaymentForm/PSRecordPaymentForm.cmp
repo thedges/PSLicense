@@ -1,0 +1,38 @@
+<aura:component controller="PSRecordPaymentFormController" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:availableForFlowScreens" access="global" >
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="amountField" type="String" default="Amount__c" />
+    <aura:attribute name="contactField" type="String" default="Contact__c" />
+    <aura:attribute name="statusField" type="String" default="PaymentStatus__c" />
+    <aura:attribute name="successValue" type="String" default="Accepted" />
+    <aura:attribute name="failValue" type="String" default="Rejected" />
+    
+    <aura:attribute name="paymentObjectName" type="String" default="Payment__c" />
+    <aura:attribute name="paymentParentField" type="String" default="TestParent__c" />
+    <aura:attribute name="paymentStatusField" type="String" default="Status__c" />
+    <aura:attribute name="paymentTransIdField" type="String" default="Transaction_ID__c" />
+    <aura:attribute name="paymentTransMsgField" type="String" default="Transaction_Msg__c" />
+    <aura:attribute name="paymentAmountField" type="String" default="Amount__c" />
+    
+    <aura:attribute name="mockPayment" type="Boolean" default="true" />
+    
+    <aura:attribute name="amount" type="Integer" default="0" />
+    <aura:attribute name="showPayment" type="Boolean" default="true" />
+    <aura:attribute name="showCancelBtn" type="Boolean" default="false" />
+    <aura:attribute name="contactId" type="String" />
+
+    <aura:attribute name="showFinalMsg" type="Boolean" default="false" />
+    <aura:attribute name="finalMsgScreen" type="Boolean" default="false" />
+ 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="paymentEvent" event="c:PSPaymentEvent" action="{!c.handlePaymentEvent}" />
+    
+    <aura:if isTrue="{!v.amount > 0}">
+      <aura:if isTrue="{!v.finalMsgScreen == false}">
+        <c:PSPaymentForm show="{!v.showPayment}" amount="{!v.amount}" contactId="{!v.contactId}" 
+         showCancelBtn="{!v.showCancelBtn}" mockPayment="{!v.mockPayment}"/>
+      </aura:if>
+      <aura:if isTrue="{!v.finalMsgScreen == true}">
+        <b>Payment of ${!v.amount} has been processed successfully.</b>
+      </aura:if>
+    </aura:if>
+</aura:component>

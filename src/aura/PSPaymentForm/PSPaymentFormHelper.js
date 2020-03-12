@@ -2,10 +2,13 @@
     getPaymentAccounts: function(component) {
         console.log('getPaymentAccounts started...');
         var action = component.get("c.getPaymentAccounts");
+        action.setParams({
+            "contactId": component.get('v.contactId')
+        });
         var self = this;
         action.setCallback(this, function(a) {
             console.log('query callback!');
-            console.log(JSON.stringify(a.getReturnValue()));
+            console.log('paymentAccounts=' + JSON.stringify(a.getReturnValue()));
             component.set("v.acctPaymentList", a.getReturnValue());
             self.setNicknames(component);
         });
@@ -78,6 +81,7 @@
         var paymentType = component.get('v.paymentType');
         paramMap['paymentType'] = paymentType;
         paramMap['amount'] = component.get('v.amount');
+        paramMap['mockPayment'] = component.get('v.mockPayment');
 
         if (paymentType == 'Bank Account') {
             paramMap['acctHolderName'] = component.get('v.acctHolderName');
@@ -89,6 +93,7 @@
             paramMap['ccExpDate'] = component.get('v.ccExpDate');
             paramMap['ccSecurityCode'] = component.get('v.ccSecurityCode');
         }
+        console.log('makePayment params = ' + JSON.stringify(paramMap));
         var action = component.get("c.makePayment");
         action.setParams({
             "params": JSON.stringify(paramMap)

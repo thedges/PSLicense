@@ -1,0 +1,18 @@
+<design:component>
+    <design:attribute name="recordId" label="Record ID" />
+    <design:attribute name="amountField" label="Amount Field API Name" />
+    <design:attribute name="contactField" label="Contact Field API Name" />
+    <design:attribute name="statusField" label="Status Field API Name" />
+    <design:attribute name="successValue" label="Status Success Value" />
+    <design:attribute name="failValue" label="Status Failure Value" />
+
+    <design:attribute name="paymentObjectName" label="Payment Object API Name" />
+    <design:attribute name="paymentParentField" label="Payment Parent Field API Name" />
+    <design:attribute name="paymentStatusField" label="Payment Status Field API Name" />
+    <design:attribute name="paymentTransIdField" label="Payment Transaction ID Field API Name" />
+    <design:attribute name="paymentTransMsgField" label="Payment Transaction Msg Field API Name" />
+    <design:attribute name="paymentAmountField" label="Payment Amount Field API Name" />
+
+    <design:attribute name="mockPayment" label="Mock Payment" />
+    <design:attribute name="showFinalMsg" label="Show Confirmation Message" />
+</design:component>

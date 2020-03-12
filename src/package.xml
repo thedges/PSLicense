@@ -5,6 +5,7 @@
         <members>PSLicenseSelectorController</members>
         <members>PSPaymentAlertController</members>
         <members>PSPaymentFormController</members>
+        <members>PSRecordPaymentFormController</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -14,6 +15,7 @@
         <members>PSPaymentAlert</members>
         <members>PSPaymentEvent</members>
         <members>PSPaymentForm</members>
+        <members>PSRecordPaymentForm</members>
         <name>AuraDefinitionBundle</name>
     </types>
     <types>

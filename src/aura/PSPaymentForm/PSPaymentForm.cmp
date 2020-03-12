@@ -7,13 +7,17 @@
     <aura:attribute name="errorMsg" type="String" />
     <aura:attribute name="acctHolderName" type="String" />
     <aura:attribute name="acctNumber" type="String" />
+    <aura:attribute name="checkNumber" type="String" />
     <aura:attribute name="acctRouting" type="String" />
     <aura:attribute name="ccNameOnCard" type="String" />
     <aura:attribute name="ccNumber" type="String" />
     <aura:attribute name="ccExpDate" type="String" />
     <aura:attribute name="ccSecurityCode" type="String" />
 
+    <aura:attribute name="contactId" type="String" />
     <aura:attribute name="acctPaymentList" type="List" />
+    <aura:attribute name="showCancelBtn" type="Boolean" default="true" />
+    <aura:attribute name="mockPayment" type="Boolean" default="false" />
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <aura:registerEvent name="paymentEvent" type="c:PSPaymentEvent"/>
@@ -31,11 +35,13 @@
                         <option value="Credit Card">Credit Card</option>
                         <option value="Bank Account">Bank Account</option>
                     </lightning:select>
+                    <aura:if isTrue="{!and(v.acctPaymentList != null, v.acctPaymentList.length > 0)}">
                     <lightning:select name="nicknameSelect" aura:id="nicknameSelect" label="Nickname:" onchange="{!c.nicknameSelect}">
                         <aura:iteration items="{!v.nicknameList}" var="item">
                             <option text="{!item}" value="{!item}" />
                         </aura:iteration>
                     </lightning:select>
+                    </aura:if>
                     <!-- <lightning:input label="Nickname:" name="nickname" /> -->
                     <lightning:input label="Payment Amount:" type="number" formatter="currency" name="paymentAmount" value="{!v.amount}" readonly="true"/>
                 </div>
@@ -43,6 +49,7 @@
                     <lightning:input label="Account Holder Name:" name="acctHolderName" value="{!v.acctHolderName}"/>
                     <lightning:input label="Account Number:" name="acctNumber"  value="{!v.acctNumber}"/>
                     <lightning:input label="Routing Number:" name="acctRouting"  value="{!v.acctRouting}"/>
+                    <lightning:input label="Check Number:" name="checkNumber"  value="{!v.checkNumber}"/>
                     <div style="padding-top: 20px;" align="center"><img src="{!$Resource.PSCheckDetails}" /></div>
                 </aura:if>
                 <aura:if isTrue="{!v.paymentType == 'Credit Card'}">
@@ -53,7 +60,9 @@
                 </aura:if>
                 <div class="slds-p-top_small">
                     <lightning:button variant="brand" label="Accept" onclick="{!c.btnAccept}" />
-                    <lightning:button variant="brand" label="Cancel" onclick="{!c.btnCancel}" />
+                    <aura:if isTrue="{!v.showCancelBtn}">
+                      <lightning:button variant="brand" label="Cancel" onclick="{!c.btnCancel}" />
+                    </aura:if>
                 </div>
             </div>
         </div>
